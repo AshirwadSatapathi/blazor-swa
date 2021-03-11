@@ -1,0 +1,9 @@
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\bin\Debug\netstandard2.0\Shared.deps.json
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\bin\Debug\netstandard2.0\Shared.dll
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\bin\Debug\netstandard2.0\Shared.pdb
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.csprojAssemblyReference.cache
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.AssemblyInfoInputs.cache
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.AssemblyInfo.cs
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.csproj.CoreCompileInputs.cache
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.dll
+C:\Users\Ashirwad Satapathi\Downloads\Compressed\blazor-starter-main\blazor-starter-main\Shared\obj\Debug\netstandard2.0\Shared.pdb

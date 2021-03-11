@@ -1,0 +1,51 @@
+﻿@page "/SubmitFeedback"
+@using BlazorApp.Shared
+@inject HttpClient http
+
+<h3>Submit Feedback</h3>
+<EditForm Model="feedback">
+    
+    <div class="form-group">
+        <label for="studentId">Student Id</label>
+        <InputNumber @bind-Value="feedback.StudentId" class="form-control" id="studentId" />
+
+    </div>
+
+    <div class="form-group">
+        <label for="subjectName">Subject Name</label>
+        <InputText @bind-Value="feedback.SubjectName" class="form-control" id="subjectName" />
+
+    </div>
+
+    <div class="form-group">
+        <label for="feedback">Enter Feedback</label>
+        <InputTextArea @bind-Value="feedback.StudentFeedback" class="form-control" id="feedback" />
+
+    </div>
+    <div>
+        <button type="submit" @onclick="SaveFeedback" class="btn btn-success">Save</button>
+    </div>
+
+    <div>
+        <p class="alert-info">@message</p>
+    </div>
+</EditForm>
+
+
+@code {
+    private Feedback feedback = new Feedback();
+    string message = "";
+    private async Task SaveFeedback()
+    {
+        try
+        {
+            message = "Sending the feedback"; 
+            var response = await http.PostAsJsonAsync("/api/SubmitFeedback", feedback);
+            message = "Feed";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+}

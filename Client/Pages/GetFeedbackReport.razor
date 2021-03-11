@@ -1,0 +1,73 @@
+﻿@page "/GetFeedbackReport" 
+@using BlazorApp.Shared
+@inject HttpClient http
+<h3>Get Feedback Report</h3>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (feedbackReports == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Postive Feedback</th>
+                <th>Negative Feedback</th>
+                <th>Mixed Feedback</th>
+                <th>Neutral Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in displayReportModels)
+            {
+            <tr>
+                <td>@report.SubjectName</td>
+                <td>@((report.TotalPositiveFeedback*100)/report.TotalFeedbacks)%</td>
+                <td>@((report.TotalNegativeFeedback*100)/report.TotalFeedbacks)%</td>
+                <td>@((report.TotalMixedFeedback*100)/report.TotalFeedbacks)%</td>
+                <td>@((report.TotalNeutralFeedback*100)/report.TotalFeedbacks)%</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<FeedbackReport> feedbackReports;
+    List<DisplayReportModel> displayReportModels = new List<DisplayReportModel>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            feedbackReports = await http.GetFromJsonAsync<List<FeedbackReport>>("/api/GetAllFeedback");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        foreach (var report1 in feedbackReports)
+        {
+            foreach (var report2 in feedbackReports)
+            {
+                if ((report1.SubjectName == report2.SubjectName) && displayReportModels.FindAll(x => x.SubjectName == report1.SubjectName).Count == 0)
+                {
+                    DisplayReportModel displayReportModel = new DisplayReportModel();
+                    displayReportModel.SubjectName = report2.SubjectName;
+                    displayReportModel.TotalFeedbacks = feedbackReports.FindAll(x => x.SubjectName == report2.SubjectName).Count;
+                    displayReportModel.TotalPositiveFeedback = feedbackReports.FindAll(x => x.FeedbackSentiment == "Positive" && x.SubjectName == report2.SubjectName).Count;
+                    displayReportModel.TotalNegativeFeedback = feedbackReports.FindAll(x => x.FeedbackSentiment == "Negative" && x.SubjectName == report2.SubjectName).Count;
+                    displayReportModel.TotalNeutralFeedback = feedbackReports.FindAll(x => x.FeedbackSentiment == "Neutral" && x.SubjectName == report2.SubjectName).Count;
+                    displayReportModel.TotalMixedFeedback = feedbackReports.FindAll(x => x.FeedbackSentiment == "Mixed" && x.SubjectName == report2.SubjectName).Count;
+                    displayReportModels.Add(displayReportModel);
+
+                }
+            }
+        }
+    }
+}
