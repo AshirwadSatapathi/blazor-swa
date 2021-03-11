@@ -39,13 +39,13 @@
     {
         try
         {
-            message = "Sending the feedback"; 
+            message = "Sending the feedback";
             var response = await http.PostAsJsonAsync("/api/SubmitFeedback", feedback);
-            message = "Feed";
+            message = "Feedback stored in the destination";
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.ToString());
+            message = "Failed to store your feedback";
         }
     }
 }
