@@ -57,7 +57,7 @@ namespace BlazorApp.Api
             {
                 using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("connectionString")))
                 {
-                    string queryString = @"INSERT INTO [FeedbackTest](StudentId,SubjectName,StudentFeedback,FeedbackSentiment)
+                    string queryString = @"INSERT INTO [Feedback](StudentId,SubjectName,StudentFeedback,FeedbackSentiment)
                                        VALUES(@StudentId,@SubjectName,@StudentFeedback,@FeedbackSentiment)";
 
                     using (SqlCommand cmd = new SqlCommand(queryString))

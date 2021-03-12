@@ -26,7 +26,7 @@ namespace BlazorApp.Api
 
 			using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("connectionString")))
 			{
-				string oString = "select SubjectName,FeedbackSentiment FROM FeedbackTest";
+				string oString = "select SubjectName,FeedbackSentiment FROM Feedback";
 				SqlCommand oCmd = new SqlCommand(oString, connection);
 				connection.Open();
 				using (SqlDataReader oReader = oCmd.ExecuteReader())
